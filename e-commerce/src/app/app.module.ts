@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NaoEncotradoComponent } from './nao-encotrado/nao-encotrado.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// Ferramenta para notificações 
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,9 @@ import { NaoEncotradoComponent } from './nao-encotrado/nao-encotrado.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

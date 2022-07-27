@@ -13,11 +13,13 @@ export class ProdutoComponent implements OnInit {
 
 
   constructor(
+    // Importando a lista de produtos 
     private produtosService: ProdutosService
   ) { }
 
   ngOnInit(): void {
-    this.produtosService.getAll
+    // pegando a lista de produtos pelo serviço 
+    this.produtos = this.produtosService.getAll();
   }
 
 }

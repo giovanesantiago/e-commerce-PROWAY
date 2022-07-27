@@ -5,18 +5,20 @@ import { IProduto, produtos } from './produtos';
   providedIn: 'root'
 })
 export class ProdutosService {
-
-  produtos : IProduto[] = produtos;
-
+  // Var ter acesso direto aos produtos do Back end
+  produto : IProduto[] = produtos;
+  
   constructor() { }
 
 
-
+  // Metodo para retornar a lista de produtos 
   getAll() {
-    return this.produtos;
+    return this.produto;
+    
   }
 
+  // Metodo para receber a id do produto 
   getOne(produtoId: number){
-    return this.produtos.find(produto => produto.id = produtoId)
+    return this.produto.find(produto => produto.id === produtoId)
   }
 }
