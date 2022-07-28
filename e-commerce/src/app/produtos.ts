@@ -1,5 +1,6 @@
 // Simulação de Back End
 
+// Interface dos produtos
 export interface IProduto {
     id: number;
     descricao: string;
@@ -7,6 +8,11 @@ export interface IProduto {
     descricaoPreco: string;
     quantidadeEstoque: number;
     imagem: string;
+}
+
+// Interface dos itens Carrinho
+export interface IProdutoCarrinho  extends IProduto{
+    quantidade: number;
 }
 
 export const produtos: IProduto[] = [
