@@ -16,8 +16,9 @@ export class CarrinhoService {
   // Lista de itens
   obtemCarrinho() {
     // Pegar as infos do carrino dentro do local store
-    return JSON.parse(localStorage.getItem("carrinho") || ""); 
+    this.itens = JSON.parse(localStorage.getItem("carrinho") || ""); 
     // Parse = converte de String para objeto
+    return this.itens;
   }
 
   // Adcionar os itens do carrino
@@ -27,6 +28,13 @@ export class CarrinhoService {
     // Add todos os itens apos inserir o novo itens no local store
     localStorage.setItem("carrinho", JSON.stringify(this.itens));
     // stringify  = converte de objeto para string
+  }
+
+  //Remover produto do carrinho
+  removerProdutoCarrinho(produtoId: number) {
+    // filtrando produto que não tem esse id
+    this.itens = this.itens.filter(item => item.id !== produtoId);
+    localStorage.setItem("carrinho", JSON.stringify(this.itens));
   }
 
   // Limpar o carrinho 
