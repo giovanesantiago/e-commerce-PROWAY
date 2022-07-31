@@ -1,19 +1,24 @@
 <h2 class="cart-title"> Carrinho </h2>
-<div>
+<!-- ngif para esconder div caso não tenha itens no carrinho -->
+<div *ngIf="itensCarrinho.length > 0 else semProduto">
     <ul>
+        <!--Usando ngfor para pecorrer item por item -->
         <li *ngFor="let itemCarrinho of itensCarrinho">
             <img [src]="itemCarrinho.imagem"/>
             <p>{{ itemCarrinho.descricao }}</p>
-            <p>Preço: R${{ itemCarrinho.preco }}</p>
+            <p>Preço: {{ itemCarrinho.preco | currency: "BRL"}}</p>
             <label>
                 Quantidade: 
-                <input type="number" [(ngModel)]="itemCarrinho.quantidade">
+                <!-- Não pode esquecer de importar o FormsModule dentro do module.ts para usar o ngmodel-->
+                <input type="number" [(ngModel)]="itemCarrinho.quantidade" (change)="calculaTotal()">
             </label>
             <button class="remove-button" (click)="removerProdutoCarrinho(itemCarrinho.id)">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </li>
     </ul>
-    <h2 class="cart-total">Total: R$1300</h2>
-    <button class="buy-button">Comprar</button>
+    <h2 class="cart-total">Total: {{ total | currency: "BRL" }}</h2>
+    <button class="buy-button" (click)="comprar()">Comprar</button>
 </div>
+<!-- Template para pagina de carrinho sem produto  -->
+<ng-template #semProduto >Nenhum produto foi adicionado no carrinho </ng-template>

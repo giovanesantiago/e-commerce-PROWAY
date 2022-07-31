@@ -16,7 +16,7 @@ export class CarrinhoService {
   // Lista de itens
   obtemCarrinho() {
     // Pegar as infos do carrino dentro do local store
-    this.itens = JSON.parse(localStorage.getItem("carrinho") || ""); 
+    this.itens = JSON.parse(localStorage.getItem("carrinho") || "[]"); 
     // Parse = converte de String para objeto
     return this.itens;
   }
@@ -34,6 +34,7 @@ export class CarrinhoService {
   removerProdutoCarrinho(produtoId: number) {
     // filtrando produto que não tem esse id
     this.itens = this.itens.filter(item => item.id !== produtoId);
+    // sobrescrevendo a nova array dentro do localStory do browser
     localStorage.setItem("carrinho", JSON.stringify(this.itens));
   }
 
